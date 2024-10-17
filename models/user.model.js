@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     profile:{type:String},
     address:{type:String},
     phone:{type:String},
-    pincode:{type:String}
+    pincode:{type:String},
+    otp:{type:Number}
 })
 export default mongoose.model.Users||mongoose.model("User",userSchema)

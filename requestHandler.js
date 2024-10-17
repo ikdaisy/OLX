@@ -2,6 +2,17 @@ import userSchema from './models/user.model.js';
 import productSchema from "./models/product.model.js";
 import bcrypt from 'bcrypt';
 import pkg from "jsonwebtoken";
+import nodemailer from "nodemailer"
+
+const transporter = nodemailer.createTransport({
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
+    secure: false, // true for port 465, false for other ports
+    auth: {
+      user: "aea83a68a8ccdf",
+      pass: "745739627f7a80",
+    },
+  });
 
 const {sign}=pkg;
 
@@ -133,7 +144,7 @@ export async function deleteUser(req,res) {
     
 }
 
-
+// ADD PRODUCT
 export async function addProduct(req,res) {
     try {
         const {pname,price,category,description,images,sellerId} = req.body;
@@ -156,6 +167,41 @@ export async function addProduct(req,res) {
     }
 }
 
+// EDIT PRODUCT
+export async function editProduct(req,res) {
+    try{
+        const _id=req.params
+    const {...product}=req.body
+    const data = await productSchema.updateOne({_id},{$set:{...product}})
+    res.status(200).send({msg:"Successfully updated"})
+    }
+    catch(error){
+        res.status(404).send({msg:error})
+    } 
+}
+
+// DELETE PRODUCT
+
+export async function deleteProduct(req,res) {
+    try {
+        const _id=req.params
+        console.log(_id);
+        productSchema.deleteOne({_id}).then(()=>{
+            res.status(200).send({msg:"Deleted successfully"})
+            // window.location.reload()
+    
+        }).catch((error)=>{
+            console.log(error);
+            
+        })
+    } catch (error) {
+        console.log(error);  
+    }
+    
+}
+
+
+
 //view product details
 export async function getProductDetails(req,res) {
    try {
@@ -167,5 +213,50 @@ export async function getProductDetails(req,res) {
    }
     
     
+}
+
+//generate otp for forgot password
+export async function generateOTP(req,res) {
+   try {
+     // res.send("otp reached")
+     const {email}=req.body
+     console.log(email);
+     
+     //check if the user with the email exists or not
+     const user=await userSchema.findOne({email})
+     if(!user)
+         return res.status(404).send({msg:"Invalid Email"})
+ 
+     //otp generation code 
+     let digits = '0123456789'; 
+     let otp = ''; 
+     let len = digits.length 
+     for (let i = 0; i < 6; i++) { 
+         otp += digits[Math.floor(Math.random() * len)]; 
+     } 
+     console.log(otp);
+     //update otp in the db 
+     userSchema.updateOne({email},{$set:{otp}}).then(async()=>{
+         const info = await transporter.sendMail({
+             from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
+             to: `${email}`, // list of receivers
+             subject: "OTP", // Subject line
+             text: "VERIFICATION", // plain text body
+             html: `<b>Your OTP is ${otp}</b>`, // html body
+           });
+         
+           console.log("Message sent: %s", info.messageId);
+           res.status(200).send({msg:"OTP has been sent to the email successfully"})
+ 
+ 
+     }).catch((error)=>{
+         console.log(error);
+         
+     })
+    
+   } catch (error) {
+    console.log(error);
+   }
+  
 }
 

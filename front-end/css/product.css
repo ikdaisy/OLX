@@ -119,11 +119,15 @@ a{
   /* position: relative; */
 
 }
+.main{
+  display: flex;
+}
 .pro-cards{
 /* position: absolute; */
 /* top: 2%; */
 /* left: 1%; */
 margin-right: 20px;
+
 margin-left: 20px;
 }
 
@@ -132,14 +136,16 @@ margin-left: 20px;
   height: 4rem;
   /* border: 2px solid red; */
   margin-top: 10px;
-  box-shadow:  rgba(0, 0, 0, 0.40) 0px 5px 15px;
+  box-shadow:  rgba(119, 113, 113, 0.4) 0px 5px 15px;
+  margin-bottom: 40px;
+
   
 
 }
 
 .pro-card img{
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   object-fit: cover;
 }
 
@@ -147,29 +153,28 @@ margin-left: 20px;
   height: 25rem;
   width: 24rem;
   margin-top: 10px;
-
   /* position: absolute; */
   background-color: rgba(243, 236, 236, 0.6);
-  /* top: 3%; */
-  /* left: 9%; */
+  margin-left: 10px;
   box-shadow:  rgba(0, 0, 0, 0.40) 0px 5px 15px;
 
 }
 .pro-pic img{
-  width: 20rem;
-  height: 22rem;
-  
+  width: 27rem;
+  height: 25rem;
+  background-position: center;
+  background-size: cover;
 }
 
 .pro-content{
-  width: 60%;
-  height: 90vh;
+  width: 50%;
+  height: 65vh;
   margin-bottom: 20px;
  margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 70px;
  
  background-color: white;
-  box-shadow: rgba(26, 25, 25, 0.2) 0px 5px 15px;
+  box-shadow:rgba(26, 25, 25, 0.2) 0px 5px 15px;
   padding: 10px 10px;
 }
 
@@ -212,6 +217,43 @@ margin-left: 20px;
   background-color:orange ;
   transform: scale(0.9);
 
+}
+
+.edit-btn{
+  color:white;
+  background-color: rgb(12, 12, 122);
+
+  padding: 10px 10px;
+  /* margin-right: 8px; */
+  border: none;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-btn:hover{
+  background-color:rgb(16, 16, 224) ;
+
+  color:white;
+}
+.delete-btn:hover{
+  background-color:rgb(160, 37, 37);
+
+
+}
+.delete-btn{
+  background-color:rgb(104, 16, 16);
+
+
+  color:white;
+  padding: 10px 6px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  
 }
 
 

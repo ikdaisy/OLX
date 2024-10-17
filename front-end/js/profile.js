@@ -54,7 +54,7 @@ async function getUser(){
             
             
             str+=`<div class="men-cards" id="products">
-                <a class="asd" href="./pages/product.html">
+                <a class="asd" href="./product.html?id=${product._id}">
                     <div>
                     <div class="men-card">
                   <div class="image">

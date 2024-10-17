@@ -10,7 +10,7 @@ async function getProducts() {
     console.log(result);
     str=``;
     result.products.map((product)=>{
-        str+=`<a class="asd" href="./pages/product.html?id=${product.id}">
+        str+=`<a class="asd" href="./pages/allProducts.html?id=${product._id}">
             <div>
             <div class="men-card">
           <div class="image">
@@ -33,17 +33,32 @@ document.getElementById("products").innerHTML=str;
 
 
 
-token?document.getElementById("profile").innerHTML=` <div  class="container">
+// token?document.getElementById("profile").innerHTML=` <div  class="container">
+//             <img src="${result.profile}" alt="" id="profileImage" class="profile-image" onclick="popup()">
+//             <div class="dropdown" id="dropdownMenu">
+               
+//                 <div class="dropdown-option" ><a href="./pages/profile.html?id=${result.id}"><button>View Profile</button></a></div>
+//                 <div class="dropdown-option"><button onclick="logout()" id="hover">LOGOUT</button></div>
+//             </div>
+//         </div> `:document.getElementById("profile").innerHTML=`<a href="./pages/signin.html">LOGIN</a> `;
+
+// document.getElementById("sell").innerHTML=`<a href="./pages/addProduct.html?id=${result.id}"><button class="sell" >+SELL</button></a>`
+if(res.status==200){
+    document.getElementById("profile").innerHTML=` <div  class="container">
             <img src="${result.profile}" alt="" id="profileImage" class="profile-image" onclick="popup()">
-            <div class="dropdown" id="dropdownMenu">
+             <div class="dropdown" id="dropdownMenu">
                
                 <div class="dropdown-option" ><a href="./pages/profile.html?id=${result.id}"><button>View Profile</button></a></div>
-                <div class="dropdown-option"><button onclick="logout()" id="hover">LOGOUT</button></div>
-            </div>
-        </div> `:document.getElementById("profile").innerHTML=`<a href="./pages/signin.html">LOGIN</a> `;
-
-document.getElementById("sell").innerHTML=`<a href="./pages/addProduct.html?id=${result.id}"><button class="sell" >+SELL</button></a>`
+                <div class="dropdown-option"><button onclick="logout()" id="hover">LOGOUT</button></div>           </div>
+        </div>
+        
+         `
+         
+         document.getElementById("sell").innerHTML=`<a href="./pages/addProduct.html?id=${result.id}"><button class="sell" >+SELL</button></a>`
 }
+
+}
+
 
 
 getProducts()
