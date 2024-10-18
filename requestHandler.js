@@ -79,18 +79,20 @@ export async function signIn(req,res){
 
 export async function getProducts(req,res) {
    try{
-    const products=await productSchema.find();
+       const products=await productSchema.find();
+    if(req.user!=null){
     console.log(req.user);
-
     const _id = req.user.userId
     // console.log(_id);
     const user = await userSchema.findOne({_id})
     // console.log(user.profile);
-
     return res.status(200).send({products,profile:user.profile,id:_id})
-    
-    
-   
+    }
+    else{
+    return res.status(404).send({products,msg:"Please login again"})
+
+        
+    }
    }
    catch(error){
     res.status(404).send(error)
@@ -215,6 +217,8 @@ export async function getProductDetails(req,res) {
     
 }
 
+//FOROGT PASSWORD
+
 //generate otp for forgot password
 export async function generateOTP(req,res) {
    try {
@@ -245,10 +249,10 @@ export async function generateOTP(req,res) {
              html: `<b>Your OTP is ${otp}</b>`, // html body
            });
          
-           console.log("Message sent: %s", info.messageId);
+           console.log("Message sent: %s", info.messageId)
            res.status(200).send({msg:"OTP has been sent to the email successfully"})
  
- 
+
      }).catch((error)=>{
          console.log(error);
          
@@ -258,5 +262,42 @@ export async function generateOTP(req,res) {
     console.log(error);
    }
   
+}
+
+export async function compareOTP(req,res) {
+    const {otp}=req.body;
+    console.log(otp);
+    const user=await userSchema.findOne({otp})
+    // console.log(user);
+    //check the otp in the database and entered otp
+    if(otp!=user.otp)
+        return res.status(404).send({msg:"Failed"})
+
+    await userSchema.updateOne({otp},{$set:{otp:null}}).then(()=>{
+        res.status(200).send({msg:"Success"})
+
+    }).catch((error)=>{
+        console.log(error);
+        
+    })
+     
+}
+
+export async function changePassword(req,res) {
+
+    const {newPassword,userEmail}=req.body
+    //update the new password (hash before updating)
+    bcrypt.hash(newPassword,10).then((hashedPassword)=>{
+        userSchema.updateOne({email:userEmail},{$set:{password:hashedPassword}}).then(()=>{
+               res.status(200).send({msg:"Your password has been succesfully updated"})
+             }).catch((error)=>{
+                console.log(error);
+                
+             })
+
+    })
+
+    
+    
 }
 

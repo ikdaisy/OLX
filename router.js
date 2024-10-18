@@ -23,6 +23,9 @@ router.route("/editproduct/:_id").put(rh.editProduct)
 router.route("/deleteproduct/:_id").delete(rh.deleteProduct)
 
 router.route("/generateotp").post(rh.generateOTP)
+router.route("/compareotp").post(rh.compareOTP)
+router.route("/changepassword").post(rh.changePassword)
+
 
 
 

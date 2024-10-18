@@ -1,11 +1,13 @@
 const token=localStorage.getItem("Token")
 // console.log(token);
-
+ 
 
 async function getProducts() {
     // alert("hii")
     const res=await fetch("http://localhost:3003/api/getproducts",{headers:{
     "authorization" : `Bearer ${token}`}})
+    console.log(res);
+    
     const result=await res.json();
     console.log(result);
     str=``;
@@ -55,6 +57,28 @@ if(res.status==200){
          `
          
          document.getElementById("sell").innerHTML=`<a href="./pages/addProduct.html?id=${result.id}"><button class="sell" >+SELL</button></a>`
+}
+else if(res.status==403){
+    result.products.map((product)=>{
+        str+=`<a class="asd" href="./pages/allProducts.html?id=${product._id}">
+            <div>
+            <div class="men-card">
+          <div class="image">
+            <img src="${product.images[0]}" alt="">
+          </div>
+          <div class="content">
+             <span class="product-name">${product.pname.substring(0,16)}</span><br>
+             <span class="price">₹${product.price}</span><br>
+            
+          </div>
+          
+        </div>
+        </div> </a>
+        
+        `
+    })
+document.getElementById("products").innerHTML=str;
+
 }
 
 }

@@ -10,8 +10,10 @@
     console.log(data);
     
     if(res.status==200){
+        //store email in the local storage 
         localStorage.setItem("email",email)
         alert(data.msg)
+        window.location.href="./otp.html"
     }
     else{
         alert(data.msg)
