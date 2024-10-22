@@ -10,7 +10,7 @@ router.route("/getuser/:id").get(rh.getUser)
 router.route("/edituser/:_id").put(rh.editUser)
 router.route("/deleteuser/:_id").delete(rh.deleteUser)
 //index get all products
-router.route("/getproducts/").get(Auth,rh.getProducts)
+router.route("/getproducts").get(Auth,rh.getProducts)
 
 //display product details
 router.route("/getproductdetails/:_id").get(rh.getProductDetails)
@@ -22,9 +22,16 @@ router.route("/editproduct/:_id").put(rh.editProduct)
 //delete product
 router.route("/deleteproduct/:_id").delete(rh.deleteProduct)
 
+//otp
 router.route("/generateotp").post(rh.generateOTP)
 router.route("/compareotp").post(rh.compareOTP)
 router.route("/changepassword").post(rh.changePassword)
+
+//wishlist
+router.route("/addwishlist").post(rh.addToWishlist)
+router.route("/getwishlist").get(rh.getWishlist)
+router.route("/deletewishlist/:_id").delete(rh.deleteWishlist)
+
 
 
 

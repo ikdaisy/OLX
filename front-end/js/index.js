@@ -81,11 +81,49 @@ document.getElementById("products").innerHTML=str;
 
 }
 
+//search code
+
+document.getElementById("search").addEventListener('keyup',async(e)=>{
+    try {
+        const res=await fetch("http://localhost:3003/api/getproducts",{headers:{
+            "authorization" : `Bearer ${token}`}})
+        const products=await res.json();
+        console.log(products);
+        
+        str=``;
+        products.products.filter((i)=>i.pname.toLowerCase().includes(e.target.value.toLowerCase())).map((product)=>{
+            str+=`<a class="asd" href="./pages/allProducts.html?id=${product._id}">
+            <div>
+            <div class="men-card">
+          <div class="image">
+            <img src="${product.images[0]}" alt="">
+          </div>
+          <div class="content">
+             <span class="product-name">${product.pname.substring(0,16)}</span><br>
+             <span class="price">₹${product.price}</span><br>
+            
+          </div>
+          
+        </div>
+        </div> </a>
+            
+        `
+        })
+
+        document.getElementById("products").innerHTML=str;
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+
+
 }
 
 
 
 getProducts()
+
 
 
 

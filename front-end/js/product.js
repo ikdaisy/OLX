@@ -35,6 +35,11 @@ async function getProductDetails() {
         <span style="font-weight: bold;font-size: 30px;" id="discount-price">$${product.price}</span>
         
        </div>
+        <h4 style="margin-bottom: 10px;font-size: 17px; color:green;">Available offers</h4>
+        <p style="margin-bottom: 5px;"><img src="../images/c22c9fc4-0555-4460-8401-bf5c28d7ba29.webp" alt="" style="width: 15px;">Bank OfferGet 10% off upto ₹50 on first Flipkart UPI transaction on order of ₹250 and aboveT&C</p>
+
+        <p style="margin-bottom: 2px;"><img src="../images/c22c9fc4-0555-4460-8401-bf5c28d7ba29.webp" alt="" style="width: 15px;">Bank Offer5% Cashback on Flipkart Axis Bank CardT&C</p>
+
   
     <span class="last-btn">
     <span class="last-btn" id="cart-btn">

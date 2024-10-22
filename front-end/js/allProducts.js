@@ -1,3 +1,5 @@
+
+
 const url=window.location.href;
 const urlParams=new URLSearchParams(url.split("?")[1]);
 const id=urlParams.get("id");
@@ -11,7 +13,7 @@ async function getProductDetails() {
     str=``
 
   product.images.map((image)=>{
-    console.log(image);
+    // console.log(image);
     
     str+=`<div class="pro-card">
                 <img src=${image} alt="no-image" onmouseover="changePic('${image}')">
@@ -35,11 +37,16 @@ async function getProductDetails() {
         <span style="font-weight: bold;font-size: 30px;" id="discount-price">$${product.price}</span>
         
        </div>
+       <h4 style="margin-bottom: 10px;font-size: 17px; color:green;">Available offers</h4>
+        <p style="margin-bottom: 5px;"><img src="" alt="" style="width: 15px;">Bank OfferGet 10% off upto ₹50 on first Flipkart UPI transaction on order of ₹250 and aboveT&C</p>
+
+        <p style="margin-bottom: 2px;"><img src="" alt="" style="width: 15px;">Bank Offer5% Cashback on Flipkart Axis Bank CardT&C</p>
+
   
     <span class="last-btn">
     <span class="last-btn" id="cart-btn">
         
-         <button class="last-btn1" >ADD TO WISHLIST</button> 
+         
         </span>
        
 
@@ -48,6 +55,18 @@ async function getProductDetails() {
     </div>
    `
   
+
+   if(localStorage.getItem(id)){
+    document.getElementById("cart-btn").innerHTML=` <a href="./wishlist.html"> <button class="last-btn1" >GO TO WISHLIST</button></a>`
+
+  
+  }
+  else{
+    document.getElementById("cart-btn").innerHTML=` <button class="last-btn1" onclick="addToWishlist('${product._id}')" >ADD TO WISHLIST</button>`
+
+  
+  
+  }
   
 }
 getProductDetails()
@@ -56,4 +75,40 @@ function changePic(image){
     document.getElementById("main-image").src=image
 
 }
+
+async function addToWishlist(id){
+  console.log(id);
+  const res = await fetch(`http://localhost:3003/api/getproductdetails/${id}`)
+  // console.log(res);
+  const product = await res.json()
+  console.log(product);
+  buyerId=product.sellerId;
+  // console.log(buyerId);
+  
+  fetch("http://localhost:3003/api/addwishlist",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({buyerId,product})
+}).then(async(res)=>{
+  console.log(res);
+  const data= await res.json()
+  if(res.status==201){
+    localStorage.setItem(id,id)
+    alert(data.msg)
+    getProductDetails()
+
+  }
+  else{
+    alert(data.msg)
+  }
+  
+}).catch((error)=>{
+  console.log(error);
+  
+})
+  
+}
+// console.log(id);
+
+console.log(localStorage.getItem(id)); 
 

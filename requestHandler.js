@@ -1,5 +1,6 @@
 import userSchema from './models/user.model.js';
 import productSchema from "./models/product.model.js";
+import wishlistSchema from "./models/wishlist.model.js"
 import bcrypt from 'bcrypt';
 import pkg from "jsonwebtoken";
 import nodemailer from "nodemailer"
@@ -296,8 +297,52 @@ export async function changePassword(req,res) {
              })
 
     })
+  
+}
+
+//   WISHLIST
+
+export async function addToWishlist(req,res) {
+   const {...data}=req.body;
+   wishlistSchema.create({...data}).then(()=>{
+    res.status(201).send({msg:"Success"})
+   }).catch((error)=>{
+    res.status(404).send({msg:"Failed"})
+   })
+ 
+}
+
+export async function getWishlist(req,res) {
+    try {
+        console.log("haha");
+        
+        
+        const data = await wishlistSchema.find()
+        console.log(data);
+        
+        res.status(200).send(data)
+       } catch (error) {
+            return res.status(404).send(error)
+       }
 
     
+}
+
+export async function deleteWishlist(req,res) {
+    try {
+        const _id=req.params
+        console.log(_id);
+        wishlistSchema.deleteOne({_id}).then(()=>{
+            res.status(200).send({msg:"Deleted successfully"})
+            // window.location.reload()
+    
+        }).catch((error)=>{
+            console.log(error);
+            
+        })
+    } catch (error) {
+        console.log(error);  
+    }
     
 }
 

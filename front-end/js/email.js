@@ -1,4 +1,7 @@
+// alert("haha")
  async function generateOTP(){
+    try {
+        alert("haha")
    const email = document.getElementById("email").value;
    await fetch("http://localhost:3003/api/generateotp",{
     method:"POST",
@@ -24,8 +27,11 @@
     
 
    })
-   
-   
-   
-   
+        
+    } catch (error) {
+        console.log(error);
+        
+        
+    }
+ 
 }
