@@ -15,8 +15,6 @@
 * [Examples](#Examples)
 * [Contributing to Express](#Contributing)
 * [TC (Technical Committee)](#tc-technical-committee)
-* [Triagers](#triagers)
-* [License](#license)
 
 
 [![NPM Version][npm-version-image]][npm-url]
@@ -24,6 +22,17 @@
 [![NPM Downloads][npm-downloads-image]][npm-downloads-url]
 [![OpenSSF Scorecard Badge][ossf-scorecard-badge]][ossf-scorecard-visualizer]
 
+
+## Get started
+
+### STEP-1: Clone the repository.
+```bash
+git clone https://github.com/ikdaisy/OLX.git
+```
+### STEP-2: Switch to the cloned directory.
+```bash
+cd novavi
+```
 
 ```js
 import express from 'express'
@@ -46,13 +55,18 @@ Before installing, [download and install Node.js](https://nodejs.org/en/download
 Node.js 18 or higher is required.
 
 If this is a brand new project, make sure to create a `package.json` first with
-the [`npm init` command](https://docs.npmjs.com/creating-a-package-json-file).
+the [`npm init -y` command](https://docs.npmjs.com/creating-a-package-json-file).
 
 Installation is done using the
 [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
 
 ```bash
 npm install express
+npm install mongoose
+npm install dotenv
+npm install bcrypt
+npm install nodemailer
+npm install jsonwebtoken
 ```
 
 Follow [our installing guide](https://expressjs.com/en/starter/installing.html)
@@ -76,35 +90,6 @@ for more information.
 
 **PROTIP** Be sure to read the [migration guide to v5](https://expressjs.com/en/guide/migrating-5)
 
-## Quick Start
-
-  The quickest way to get started with express is to utilize the executable [`express(1)`](https://github.com/expressjs/generator) to generate an application as shown below:
-
-  Install the executable. The executable's major version will match Express's:
-
-```bash
-npm install -g express-generator@4
-```
-
-  Create the app:
-
-```bash
-express /tmp/foo && cd /tmp/foo
-```
-
-  Install dependencies:
-
-```bash
-npm install
-```
-
-  Start the server:
-
-```bash
-npm start
-```
-
-  View the website at: http://localhost:3000
 
 ## Philosophy
 
@@ -121,7 +106,7 @@ npm start
   To view the examples, clone the Express repository:
 
 ```bash
-git clone https://github.com/expressjs/express.git --depth 1 && cd express
+git clone https://github.com/expressjs/express.git 
 ```
 
   Then install the dependencies:
@@ -133,7 +118,7 @@ npm install
   Then run whichever example you want:
 
 ```bash
-node examples/content-negotiation
+node app.js
 ```
 
 ## Contributing
@@ -165,101 +150,5 @@ Then run `npm test`:
 npm test
 ```
 
-## People
-
-The original author of Express is [TJ Holowaychuk](https://github.com/tj)
-
-[List of all contributors](https://github.com/expressjs/express/graphs/contributors)
-
-### TC (Technical Committee)
-
-* [UlisesGascon](https://github.com/UlisesGascon) - **Ulises Gascón** (he/him)
-* [jonchurch](https://github.com/jonchurch) - **Jon Church**
-* [wesleytodd](https://github.com/wesleytodd) - **Wes Todd**
-* [LinusU](https://github.com/LinusU) - **Linus Unnebäck**
-* [blakeembrey](https://github.com/blakeembrey) - **Blake Embrey**
-* [sheplu](https://github.com/sheplu) - **Jean Burellier**
-* [crandmck](https://github.com/crandmck) - **Rand McKinney**
-* [ctcpip](https://github.com/ctcpip) - **Chris de Almeida**
-
-<details>
-<summary>TC emeriti members</summary>
-
-#### TC emeriti members
-
-  * [dougwilson](https://github.com/dougwilson) - **Douglas Wilson**
-  * [hacksparrow](https://github.com/hacksparrow) - **Hage Yaapa**
-  * [jonathanong](https://github.com/jonathanong) - **jongleberry**
-  * [niftylettuce](https://github.com/niftylettuce) - **niftylettuce**
-  * [troygoode](https://github.com/troygoode) - **Troy Goode**
-</details>
 
 
-### Triagers
-
-* [aravindvnair99](https://github.com/aravindvnair99) - **Aravind Nair**
-* [bjohansebas](https://github.com/bjohansebas) - **Sebastian Beltran**
-* [carpasse](https://github.com/carpasse) - **Carlos Serrano**
-* [CBID2](https://github.com/CBID2) - **Christine Belzie**
-* [enyoghasim](https://github.com/enyoghasim) - **David Enyoghasim**
-* [UlisesGascon](https://github.com/UlisesGascon) - **Ulises Gascón** (he/him)
-* [mertcanaltin](https://github.com/mertcanaltin) - **Mert Can Altin**
-* [0ss](https://github.com/0ss) - **Salah**
-* [import-brain](https://github.com/import-brain) - **Eric Cheng** (he/him)
-* [3imed-jaberi](https://github.com/3imed-jaberi) - **Imed Jaberi**
-* [dakshkhetan](https://github.com/dakshkhetan) - **Daksh Khetan** (he/him)
-* [lucasraziel](https://github.com/lucasraziel) - **Lucas Soares Do Rego**
-* [IamLizu](https://github.com/IamLizu) - **S M Mahmudul Hasan** (he/him)
-* [Sushmeet](https://github.com/Sushmeet) - **Sushmeet Sunger**
-
-<details>
-<summary>Triagers emeriti members</summary>
-
-#### Emeritus Triagers
-
-  * [AuggieH](https://github.com/AuggieH) - **Auggie Hudak**
-  * [G-Rath](https://github.com/G-Rath) - **Gareth Jones**
-  * [MohammadXroid](https://github.com/MohammadXroid) - **Mohammad Ayashi**
-  * [NawafSwe](https://github.com/NawafSwe) - **Nawaf Alsharqi**
-  * [NotMoni](https://github.com/NotMoni) - **Moni**
-  * [VigneshMurugan](https://github.com/VigneshMurugan) - **Vignesh Murugan**
-  * [davidmashe](https://github.com/davidmashe) - **David Ashe**
-  * [digitaIfabric](https://github.com/digitaIfabric) - **David**
-  * [e-l-i-s-e](https://github.com/e-l-i-s-e) - **Elise Bonner**
-  * [fed135](https://github.com/fed135) - **Frederic Charette**
-  * [firmanJS](https://github.com/firmanJS) - **Firman Abdul Hakim**
-  * [getspooky](https://github.com/getspooky) - **Yasser Ameur**
-  * [ghinks](https://github.com/ghinks) - **Glenn**
-  * [ghousemohamed](https://github.com/ghousemohamed) - **Ghouse Mohamed**
-  * [gireeshpunathil](https://github.com/gireeshpunathil) - **Gireesh Punathil**
-  * [jake32321](https://github.com/jake32321) - **Jake Reed**
-  * [jonchurch](https://github.com/jonchurch) - **Jon Church**
-  * [lekanikotun](https://github.com/lekanikotun) - **Troy Goode**
-  * [marsonya](https://github.com/marsonya) - **Lekan Ikotun**
-  * [mastermatt](https://github.com/mastermatt) - **Matt R. Wilson**
-  * [maxakuru](https://github.com/maxakuru) - **Max Edell**
-  * [mlrawlings](https://github.com/mlrawlings) - **Michael Rawlings**
-  * [rodion-arr](https://github.com/rodion-arr) - **Rodion Abdurakhimov**
-  * [sheplu](https://github.com/sheplu) - **Jean Burellier**
-  * [tarunyadav1](https://github.com/tarunyadav1) - **Tarun yadav**
-  * [tunniclm](https://github.com/tunniclm) - **Mike Tunnicliffe**
-</details>
-
-
-## License
-
-  [MIT](LICENSE)
-
-[coveralls-image]: https://badgen.net/coveralls/c/github/expressjs/express/master
-[coveralls-url]: https://coveralls.io/r/expressjs/express?branch=master
-[github-actions-ci-image]: https://badgen.net/github/checks/expressjs/express/master?label=CI
-[github-actions-ci-url]: https://github.com/expressjs/express/actions/workflows/ci.yml
-[npm-downloads-image]: https://badgen.net/npm/dm/express
-[npm-downloads-url]: https://npmcharts.com/compare/express?minimal=true
-[npm-install-size-image]: https://badgen.net/packagephobia/install/express
-[npm-install-size-url]: https://packagephobia.com/result?p=express
-[npm-url]: https://npmjs.org/package/express
-[npm-version-image]: https://badgen.net/npm/v/express
-[ossf-scorecard-badge]: https://api.scorecard.dev/projects/github.com/expressjs/express/badge
-[ossf-scorecard-visualizer]: https://ossf.github.io/scorecard-visualizer/#/projects/github.com/expressjs/express
-[Code of Conduct]: https://github.com/expressjs/express/blob/master/Code-Of-Conduct.md

@@ -314,7 +314,7 @@ export async function addToWishlist(req,res) {
 
 export async function getWishlist(req,res) {
     try {
-        console.log("haha");
+        // console.log("haha");
         
         
         const data = await wishlistSchema.find()

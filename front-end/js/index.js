@@ -145,3 +145,8 @@ function logout() {
     // window.location.href="./index.html"
     window.location.reload()
 }
+
+function message(){
+   if( confirm("Please login to add products!!"))
+        window.location.href="./pages/signin.html"
+}

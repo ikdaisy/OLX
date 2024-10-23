@@ -16,7 +16,7 @@ router.route("/getproducts").get(Auth,rh.getProducts)
 router.route("/getproductdetails/:_id").get(rh.getProductDetails)
 
 //add product 
-router.route("/addproduct").post(rh.addProduct);
+router.route("/addproduct").post(Auth,rh.addProduct);
 //edit product 
 router.route("/editproduct/:_id").put(rh.editProduct)
 //delete product
