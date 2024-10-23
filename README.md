@@ -8,13 +8,11 @@
 
 * [Installation](#Installation)
 * [Features](#Features)
-* [Docs & Community](#docs--community)
-* [Quick Start](#Quick-Start)
 * [Running Tests](#Running-Tests)
 * [Philosophy](#Philosophy)
 * [Examples](#Examples)
 * [Contributing to Express](#Contributing)
-* [TC (Technical Committee)](#tc-technical-committee)
+
 
 
 [![NPM Version][npm-version-image]][npm-url]
@@ -81,14 +79,6 @@ for more information.
   * View system supporting 14+ template engines
   * Content negotiation
   * Executable for generating applications quickly
-
-## Docs & Community
-
-  * [Website and Documentation](https://expressjs.com/) - [[website repo](https://github.com/expressjs/expressjs.com)]
-  * [GitHub Organization](https://github.com/expressjs) for Official Middleware & Modules
-  * [Github Discussions](https://github.com/expressjs/discussions) for discussion on the development and usage of Express
-
-**PROTIP** Be sure to read the [migration guide to v5](https://expressjs.com/en/guide/migrating-5)
 
 
 ## Philosophy
